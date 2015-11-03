@@ -75,7 +75,7 @@ def make_graph():
     season_len = min([len(v) for v in seasons[league][season_num].values()])
     img_array = []
     teams_excluded = json.loads(request.form['teams_excluded'])
-    is_per_game = request.form['per_game']
+    is_per_game = int(request.form['per_game'])
     x_text = request.form['x_text']
     y_text = request.form['y_text']
 
