@@ -76,7 +76,7 @@ def make_graph():
     season_num = int(request.form['season_num'])
     season_start = int(request.form['season_start']) - 1
     league = int(request.form['league'])
-    season_len = min([len(v) for v in seasons[league][season_num].values()])
+    season_len = min([len(v) for v in seasons[league][season_num].values()]) - 1
     img_array = []
     teams_excluded = json.loads(request.form['teams_excluded'])
     is_per_game = request.form['per_game']
