@@ -3,6 +3,7 @@ from epl_methods import *
 import os
 import pickle
 import json
+import sys, logging
 
 '''
 Stats:
@@ -35,6 +36,9 @@ referee
 
 
 app = Flask(__name__)
+
+app.logger.addHandler(logging.StreamHandler(sys.stdout))
+app.logger.setLevel(logging.ERROR)
 
 #f = file('epl_full', 'rb')
 #seasons = pickle.load(f)
