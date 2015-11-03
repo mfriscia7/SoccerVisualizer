@@ -2,7 +2,6 @@ Flask==0.10.1
 Jinja2==2.7.3
 Werkzeug==0.9.6
 conda==3.7.0
-conda-build==1.8.2
 configobj==5.0.6
 gunicorn==19.3.0
 ipython==2.2.0
