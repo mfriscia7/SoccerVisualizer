@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>EPL Stats</title>
+
+		
+		<style>
+			#season_div{
+				height:30px;
+			}
+			
+			#options{
+				font-size:10px;
+			}
+
+			#axis_options_holder{
+				height:514px;
+				width:180px;
+				float:left;
+			}
+
+			.axis_options{
+				padding:50px;
+			}
+			
+			#slider{
+				margin:10px;
+			}
+			
+			.plot{
+				background-color:gray;
+				width:570px;
+				height:520px;
+				border-radius:5px;
+				float:left;
+				border: 1px;
+			}
+			
+			#axis_options_button{
+				margin:1px;
+			}
+			
+			.selections{
+				position: relative;
+				z-index:100;
+				background-color:gray;
+				border-radius:5px;
+				font-size:12px;
+				width: 65px;
+				text-align:center;
+				margin:5px 2px 5px 2px;
+				float:left;
+				display: block;
+				vertical-align:middle;
+			}
+			
+			.play_button{
+				clear:both;
+				background-color:#23acff;
+				margin:25px 18px 18px 0px;
+				float:left;
+			}
+			
+			#game_week_slider{
+				margin:1px 20px 20px 20px;
+			}
+			
+			.hover{
+				background-color: red !important;
+			}
+			
+			#img{
+				width:88%;
+				height:88%;
+				margin: 1% 1% 0% 0%;
+				float: left;
+				position: relative;
+			}
+			
+			.xaxis{
+				width: 87.95%;
+				height: 9%;
+				border: 1px solid black;
+				text-align: center;
+				float: right;
+				position: relative;
+				margin: 0% 2.52% 0% 0%;
+				overflow: auto;
+			}
+			
+			.yaxis{
+				height: 87.85%;
+				width: 9%;
+				border: 1px solid black;
+				text-align: center;
+				float:left;
+				position:relative;
+				margin: 0.84% 0% 0% 0%;
+				overflow: auto;
+			}
+			
+			#x_axis_label{
+				top:30%;
+				left:8%;
+				position:absolute;
+				vertical-align:middle;
+				white-space: nowrap;
+				width:420px;
+			}
+			
+			#y_axis_label{
+				top:50%;
+				left:-360%;
+				position:absolute;
+				transform: rotate(270deg);
+				white-space: nowrap;
+				width: 420px;
+			}
+			
+			#clear_button{
+				float:right;
+				margin-right:10px;
+			}
+			
+			#go_button{
+				float:right;
+				margin-right:20px;
+				padding-left:30px;
+				padding-right:30px;
+			}
+			
+			#total_button{
+				float:right;
+			}
+			
+			#per_game_button{
+				float:right;
+			}
+			
+			.radio_label{
+				float:right;
+				font-size:12px;
+			}
+		</style>
+	</head>
+	<body>
+		<div style="max-width:760px; margin:0 auto;">
+			<div id="country_div" style="height:30px;clear:both;float:left;margin-right:10px;padding-right:10px;">
+				<label for="country">Select a country</label>
+				<select name="country" class="country">
+					<option id="season_options" value="0">England</option>
+					<option id="season_options" value="1">France</option>
+					<option id="season_options" value="2">Germany</option>
+					<option id="season_options" value="3">Italy</option>
+					<option id="season_options" value="4">Spain</option>
+				</select>
+			</div>
+			<div id="season_div">
+				<label for="season">Select a season</label>
+				<select name="season" class="season">
+
+				
+				
+				</select>
+			</div>
+			
+			<p id="slide_p">
+				<label for="games_text">Games selected: </label>
+				<input type="text" id="games_text" readonly style="border:0; color:black; font-weight:bold;">
+			</p>
+			<div id="slider"></div>
+			
+			
+			<div>
+				<button id="axis_options_button" class="ui-state-default ui-corner-all">Show/Hide</button>
+
+				<button id="go_button" class="ui-state-default ui-corner-all">Go</button>
+				<button id="clear_button" class="ui-state-default ui-corner-all">Clear</button>
+				
+				<div class="ui-buttonset" style="float:right">
+					<input type="radio" checked="checked" class="radio_button" id="total_button" value=false><label for="radio1" class="radio_label">Total</label>
+					<input type="radio" id="per_game_button" class="radio_button" value=true><label for="radio1" name="radio" class="radio_label">Per Game</label>
+				</div>
+			</div>
+			
+			
+			<div id="main_window">
+				<div id="axis_options_holder">
+					<ul>
+						<li><a href="#x_axis">Stats</a></li>
+						<li><a href="#team_tab">Teams</a></li>
+					</ul>
+					<div id="x_axis">
+						<div class="selections">Goals Scored</div>
+						<div class="selections">Goals Conceded</div>
+						<div class="selections">Goals Scored 1st Half</div>
+						<div class="selections">Goals Scored 2nd Half</div>
+						<div class="selections">Goals Conceded 1st Half</div>
+						<div class="selections">Goals Conceded 2nd Half</div>
+						<div class="selections">Points</div>
+						<div class="selections">Points at half</div>
+						<div class="selections">Shots</div>
+						<div class="selections">Shots on Target</div>
+						<div class="selections">Opponent Shots</div>
+						<div class="selections">Opponent Shots on Target</div>
+						<div class="selections">Fouls</div>
+						<div class="selections">Opponent Fouls</div>
+						<div class="selections">Yellow Cards</div>
+						<div class="selections">Opponent Yellow Cards</div>
+						<div class="selections">Red Cards</div>
+						<div class="selections">Opponent Red Cards</div>
+						<div class="selections">Corners Taken</div>
+						<div class="selections">Corners Conceded</div>
+					</div>
+					<div id="team_tab">
+
+					
+					
+					</div>
+				</div>
+			
+				<div class="plot">
+					
+					<div class="yaxis"><span id="y_axis_label"></span></div>
+					<img id="img" src=""/>
+					<div class="xaxis"><span id="x_axis_label"></span></div>
+				</div>
+			</div>
+				<p style="clear:both;margin-bottom:5px;">
+					<label for="game_week_text" style="margin-right:5px;">Game:</label>
+					<input type="text" id="game_week_text" readonly style="border:0; color:black; font-weight:bold;">
+				</p>
+				<button class="play_button">Play</button>
+			<div id="game_week_slider"></div>
+			
+		</div>
+		
+		<link href="/static/js/jquery_ui/jquery-ui.css" rel="stylesheet">
+		<script src="/static/js/jquery_ui/external/jquery/jquery.js"></script>
+		<script src="/static/js/jquery_ui/jquery-ui.js"></script>
+		<script src="/static/js/jq.js"></script>
+		
+	</body>
+</html>
