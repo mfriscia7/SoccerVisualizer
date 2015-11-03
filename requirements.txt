@@ -3,6 +3,7 @@ Jinja2==2.7.3
 configobj==5.0.6
 gunicorn==19.3.0
 itsdangerous==0.24
+matplotlib==1.4.2
 nltk==3.0.0
 numpy==1.9.0
 scikit-learn==0.15.2
