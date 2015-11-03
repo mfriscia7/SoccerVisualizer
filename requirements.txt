@@ -6,7 +6,7 @@ itsdangerous==0.24
 matplotlib==1.4.2
 nltk==3.0.0
 numpy==1.9.0
-http://effbot.org/media/downloads/Imaging-1.1.7.tar.gz
+Pillow>=2.0.0
 scikit-learn==0.15.2
 scipy==0.14.0
 sympy==0.7.5
