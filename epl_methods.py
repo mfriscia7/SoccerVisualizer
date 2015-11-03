@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from matplotlib.offsetbox import AnnotationBbox, OffsetImage
 from io import BytesIO
 import base64
-import Image
+from PIL import Image
 
 stat_dict = {'home': 0, 'goals_scored': 1, 'goals_conceded': 2, 'goals_scored_1st_half': 3, 'goals_scored_2nd_half': 4,
     'goals_conceded_1st_half': 5, 'goals_conceded_2nd_half': 6, 'points': 7, 'points_at_half': 8, 'shots': 9,
