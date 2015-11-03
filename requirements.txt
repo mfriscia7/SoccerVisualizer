@@ -5,7 +5,6 @@ gunicorn==19.3.0
 itsdangerous==0.24
 nltk==3.0.0
 numpy==1.9.0
-pycurl==7.19.51
 scikit-learn==0.15.2
 scipy==0.14.0
 sympy==0.7.5
