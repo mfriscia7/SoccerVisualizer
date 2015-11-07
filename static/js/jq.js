@@ -41,7 +41,7 @@ $(document).ready(function () {
 					img_array = [];
 					img_array = JSON.parse(response);
 					change_top_slide(season_len);
-					change_slider(1, season_len);
+					change_slider(1,season_len);
 					$("#img").attr("src","data:image/png;base64,".concat(img_array[0]));
 				},
 				error: function(error){
@@ -146,7 +146,7 @@ $(document).ready(function () {
 	
 	var change_slider = function change_slider(val, max){
 		$("#game_week_slider").slider("option", "value", val);
-		$("#game_week_slider").slider("option", "min", val);
+		//$("#game_week_slider").slider("option", "min", val);
 		$("#game_week_slider").slider("option", "max", max);
 		$("#game_week_text").val(val);
 		if (val >= max){
@@ -163,6 +163,7 @@ $(document).ready(function () {
 		$("#slider").slider("option", "max", val);
 		$("#slider").slider("option", "values", [min, val]);
 		$("#games_text").val(min + " - " + val);
+		//change_slider(min, $("#slider").slider("values", 1));
 	}
 
 	$(".season").selectmenu({
@@ -265,12 +266,12 @@ $(document).ready(function () {
 			
 			// return to the beginning
 			if ($("#game_week_slider").slider("option", "value") === max){
-				change_slider(min);
+				change_slider(min, season_len);
 			}
 			
 			current = $("#game_week_slider").slider("option", "value");
 
-			slide_interval = setInterval(function() {change_slider(++current)},1000);
+			slide_interval = setInterval(function() {change_slider(++current, season_len)},1000);
 			
 		} else{
 			$(this).text("Play");
