@@ -57,7 +57,7 @@ def plot_from_dict(x, y, teams_excluded, x_text, y_text, per_game):
             _y.append(y[key])
             x_labels.append(key)
             y_labels.append(key)
-            im_array.append(Image.open('crests/' + key + '.png'))
+            im_array.append(Image.open('crests/' + key.replace("'","") + '.png'))
 
     fig, ax = plt.subplots()
     ax.scatter(_x, _y)
