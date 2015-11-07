@@ -41,7 +41,7 @@ $(document).ready(function () {
 					img_array = [];
 					img_array = JSON.parse(response);
 					change_top_slide(season_len);
-					change_slider($("#game_week_slider").slider("option","value"), season_len);
+					change_slider(1, season_len);
 					$("#img").attr("src","data:image/png;base64,".concat(img_array[0]));
 				},
 				error: function(error){
@@ -138,6 +138,7 @@ $(document).ready(function () {
 		y_label_text = "";
 		$(".xaxis")[0].childNodes[0].innerHTML = "";
 		$(".yaxis")[0].childNodes[0].innerHTML = "";
+		change_slider(1, season_len);
 		
 		$("#img").attr("src", "");
 		img_array = [];
