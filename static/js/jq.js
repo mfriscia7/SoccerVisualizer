@@ -15,13 +15,13 @@ $(document).ready(function () {
 	
 	var teams_excluded = [];
 	var season_start = 1;
-	var season_len = 10;
+	var season_len = 11;
 	var img_array;
 	var per_game = "false";
 	var x_label_text = "";
 	var y_label_text = "";
 	
-	change_country(0);
+	
 
 	$("#go_button").click(function() {
 	
@@ -112,6 +112,7 @@ $(document).ready(function () {
 				
 				var temp_array = response.split(',');
 				season_len = parseInt(temp_array.pop());
+				change_top_slide(season_len);
 				
 				while($("#team_tab .check_div").length > 0)
 					$("#team_tab .check_div").remove();
@@ -125,7 +126,7 @@ $(document).ready(function () {
 			error: function(error){
 				console.log(error);
 			}
-		})
+		});
 	}
 	
 	$("#clear_button").click(function() {
@@ -160,7 +161,7 @@ $(document).ready(function () {
 		$("#slider").slider("option", "max", val);
 		$("#slider").slider("option", "values", [min, val]);
 		$("#games_text").val(min + " - " + val);
-		change_slider(min, $("#slider").slider("values", 1));
+		//change_slider(min, $("#slider").slider("values", 1));
 	}
 
 	$(".season").selectmenu({
@@ -329,4 +330,6 @@ $(document).ready(function () {
 		label.text(text_to_add);
 		$("#img").attr("src", "");
 	}
+	
+	change_country(0);
 });
