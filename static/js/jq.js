@@ -41,6 +41,7 @@ $(document).ready(function () {
 					img_array = [];
 					img_array = JSON.parse(response);
 					change_top_slide(season_len);
+					change_slider($("#game_week_slider").slider("option","value"), season_len);
 					$("#img").attr("src","data:image/png;base64,".concat(img_array[0]));
 				},
 				error: function(error){
@@ -161,7 +162,6 @@ $(document).ready(function () {
 		$("#slider").slider("option", "max", val);
 		$("#slider").slider("option", "values", [min, val]);
 		$("#games_text").val(min + " - " + val);
-		//change_slider(min, $("#slider").slider("values", 1));
 	}
 
 	$(".season").selectmenu({
