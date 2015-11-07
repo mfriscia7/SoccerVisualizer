@@ -66,7 +66,7 @@ def get_teams():
         to_return.append(key[0])
     to_return.sort()
     # add season len on end
-    to_return.append(len(seasons[league][season][seasons[league][season].iteritems().next()[0]]))
+    to_return.append(min([len(v) for v in seasons[league][season_num].values()]) - 1)
     return ','.join(str(v) for v in to_return)
 
 @app.route('/make_graph/', methods=['POST', 'GET'])
