@@ -2,6 +2,8 @@ $(document).ready(function () {
 
 	var curr_country = 0;
 	var curr_season = -1;
+	var is_runnable = false;
+	var is_clearable = true;
 	
 	var slide_interval;
 	var current;
@@ -28,7 +30,7 @@ $(document).ready(function () {
 		if (x_ax.length === 0 || y_ax.length === 0)
 			alert("Make sure to insert values for x and y axis");
 		else{
-		
+			is_clearable = false;
 			$("#img").attr("src", "static/loading.gif");
 		
 			// create plots
@@ -43,11 +45,13 @@ $(document).ready(function () {
 					change_top_slide(season_len);
 					change_slider(1,season_len);
 					$("#img").attr("src","data:image/png;base64,".concat(img_array[0]));
+					is_runnable = true;
+					is_clearable = true;
 				},
 				error: function(error){
 					console.log(error);
 				}
-			})
+			});
 		}
 			
 	});
@@ -68,6 +72,7 @@ $(document).ready(function () {
 		$(".yaxis")[0].childNodes[0].innerHTML = "";
 		
 		$("#img").attr("src", "");
+		is_runnable = false;
 		img_array = [];
 	}
 	
@@ -131,22 +136,24 @@ $(document).ready(function () {
 	}
 	
 	$("#clear_button").click(function() {
-		x_ax = [];
-		y_ax = [];
-		
-		x_label_text = "";
-		y_label_text = "";
-		$(".xaxis")[0].childNodes[0].innerHTML = "";
-		$(".yaxis")[0].childNodes[0].innerHTML = "";
-		change_slider(1, season_len);
-		
-		$("#img").attr("src", "");
-		img_array = [];
+		if (is_clearable){
+			x_ax = [];
+			y_ax = [];
+			
+			x_label_text = "";
+			y_label_text = "";
+			$(".xaxis")[0].childNodes[0].innerHTML = "";
+			$(".yaxis")[0].childNodes[0].innerHTML = "";
+			change_slider(1, season_len);
+			
+			$("#img").attr("src", "");
+			is_runnable = false;
+			img_array = [];
+		}
 	});
 	
 	var change_slider = function change_slider(val, max){
 		$("#game_week_slider").slider("option", "value", val);
-		//$("#game_week_slider").slider("option", "min", val);
 		$("#game_week_slider").slider("option", "max", max);
 		$("#game_week_text").val(val);
 		if (val >= max){
@@ -163,7 +170,6 @@ $(document).ready(function () {
 		$("#slider").slider("option", "max", val);
 		$("#slider").slider("option", "values", [min, val]);
 		$("#games_text").val(min + " - " + val);
-		//change_slider(min, $("#slider").slider("values", 1));
 	}
 
 	$(".season").selectmenu({
@@ -258,24 +264,26 @@ $(document).ready(function () {
 	}
 	
 	$(".play_button").click(function(){
-		if ($(this).text() === "Play"){
-			$(this).text("Pause");
-			
-			min = $("#game_week_slider").slider("option", "min");
-			max = $("#game_week_slider").slider("option", "max");
-			
-			// return to the beginning
-			if ($("#game_week_slider").slider("option", "value") === max){
-				change_slider(min, season_len);
-			}
-			
-			current = $("#game_week_slider").slider("option", "value");
+		if (is_runnable){
+			if ($(this).text() === "Play"){
+				$(this).text("Pause");
+				
+				min = $("#game_week_slider").slider("option", "min");
+				max = $("#game_week_slider").slider("option", "max");
+				
+				// return to the beginning
+				if ($("#game_week_slider").slider("option", "value") === max){
+					change_slider(min, season_len);
+				}
+				
+				current = $("#game_week_slider").slider("option", "value");
 
-			slide_interval = setInterval(function() {change_slider(++current, season_len)},1000);
-			
-		} else{
-			$(this).text("Play");
-			clearInterval(slide_interval);
+				slide_interval = setInterval(function() {change_slider(++current, season_len)},1000);
+				
+			} else{
+				$(this).text("Play");
+				clearInterval(slide_interval);
+			}
 		}
 	});
 	
@@ -331,6 +339,7 @@ $(document).ready(function () {
 
 		label.text(text_to_add);
 		$("#img").attr("src", "");
+		is_runnable = false;
 	}
 	
 	change_country(0);
