@@ -82,5 +82,5 @@ def plot_from_dict(x, y, teams_excluded, x_text, y_text, per_game):
     imgdata.seek(0)
     to_return = base64.b64encode(imgdata.getvalue())
     imgdata.close()
-    plt.clf()
+    plt.close()
     return to_return
