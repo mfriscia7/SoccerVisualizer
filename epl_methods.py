@@ -8,7 +8,7 @@ from PIL import Image
 stat_dict = {'home': 0, 'goals_scored': 1, 'goals_conceded': 2, 'goals_scored_1st_half': 3, 'goals_scored_2nd_half': 4,
     'goals_conceded_1st_half': 5, 'goals_conceded_2nd_half': 6, 'points': 7, 'points_at_half': 8, 'shots': 9,
     'shots_on_target': 10, 'opponent_shots': 11, 'opponent_shots_on_target': 12, 'fouls': 13,
-    'opponent_fouls': 14, 'yellow_cards': 15, 'opponent_yellow_cards': 16, 'red_cards': 17, 'pponent_red_cards': 18,
+    'opponent_fouls': 14, 'yellow_cards': 15, 'opponent_yellow_cards': 16, 'red_cards': 17, 'opponent_red_cards': 18,
     'corners_taken': 19, 'corners_conceded': 20, 'referee': 21}
 
 

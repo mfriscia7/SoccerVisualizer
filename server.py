@@ -48,7 +48,6 @@ app.logger.setLevel(logging.ERROR)
 #data = get_stat(seasons[11], games, Stat.opponent_shots_on_target, "false")
 #data1 = get_stat(seasons[11], games, Stat.goals_conceded, "false")
 
-#data = plot_from_dict(data, data1, [])
 f = file('stats_full', 'rb')
 seasons = pickle.load(f)
 f.close()
@@ -66,7 +65,7 @@ def get_teams():
         to_return.append(key[0])
     to_return.sort()
     # add season len on end
-    to_return.append(min([len(v) for v in seasons[league][season].values()]) - 1)
+    to_return.append(min([len(v) for v in seasons[league][season].values()]))
     return ','.join(str(v) for v in to_return)
 
 @app.route('/make_graph/', methods=['POST', 'GET'])
