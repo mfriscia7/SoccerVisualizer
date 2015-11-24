@@ -17,8 +17,8 @@ class Stat(Enum):
     points_at_half = 8
 
     shots = 9
-    shots_on_target = 10
-    opponent_shots = 11
+    opponent_shots = 10
+    shots_on_target = 11
     opponent_shots_on_target = 12
 
     fouls = 13
